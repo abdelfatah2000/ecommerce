@@ -1,0 +1,1 @@
+const Wishlist = require("../model/")

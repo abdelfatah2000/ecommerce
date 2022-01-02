@@ -30,7 +30,7 @@ app.use("/api/wishlist", wishlist);
 app.use("/uploads", express.static("uploads"));
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send(" fuck you ");
 });
 
 app.listen(process.env.PORT, () => {

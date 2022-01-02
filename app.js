@@ -29,7 +29,7 @@ app.use("/api/wishlist", wishlist);
 
 app.use("/uploads", express.static("uploads"));
 
-app.get("/home", (req, res) => {
+app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 

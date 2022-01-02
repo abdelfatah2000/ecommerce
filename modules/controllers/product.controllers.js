@@ -3,17 +3,17 @@ const { StatusCodes } = require("http-status-codes");
 const Category = require("../model/category.models");
 
 const addProduct = async (req, res) => {
-  // try {
+  try {
     const payload = req.body;
     if (req.file) payload.imgURL = req.file.path;
     const productData = new Product(payload);
     await productData.save();
     res.status(StatusCodes.CREATED).json({ message: "Product is Added" });
-  // } catch (error) {
-  //   res
-  //     .status(StatusCodes.BAD_REQUEST)
-  //     .json({ message: "Please try again", error });
-  // }
+  } catch (error) {
+    res
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ message: "Please try again", error });
+  }
 };
 
 const updateProduct = async (req, res) => {

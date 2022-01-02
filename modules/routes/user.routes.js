@@ -35,19 +35,33 @@ const upload = multer({
   fileFilter,
 });
 
-app.post("/register", Validation(addUserValidation),controller.register);
-app.post("/verfiy",controller.varificationCode);
-app.post("/resendCode",controller.resendConfirmationCode);
-app.post("/login", controller.login);
-app.post("/forgetPassword", controller.forgetPassword);
-app.post("/resetPassword/:token", controller.resetPassword);
+app.post("/register", Validation(addUserValidation), controller.register);
+app.post("/verfiy", controller.varificationCode);
+app.post("/resendCode", controller.resendConfirmationCode);
+app.post("/login", Validation(loginValidation), controller.login);
+app.post(
+  "/forgetPassword",
+  Validation(forgetPasswordValidation),
+  controller.forgetPassword
+);
+app.post(
+  "/resetPassword/:token",
+  Validation(resetPasswordValidation),
+  controller.resetPassword
+);
 app.put(
   "/updateUser/:id",
   isAuthenticated(),
+  Validation(updateUserValidation),
   upload.single("photo"),
   controller.updateUser
 );
-app.delete("/deleteUser/:id", isAuthenticated(), controller.deleteUser);
+app.delete(
+  "/deleteUser/:id",
+  Validation(deleteUserValidation),
+  isAuthenticated(),
+  controller.deleteUser
+);
 app.get("/getAllUsers", isAuthenticated(), controller.allUsers);
 
 module.exports = app;

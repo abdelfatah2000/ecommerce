@@ -57,5 +57,5 @@ module.exports = {
   resetPasswordValidation,
   updateUserValidation,
   forgetPasswordValidation,
-  deleteUserValidation
+  deleteUserValidation,
 };

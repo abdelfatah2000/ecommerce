@@ -24,10 +24,11 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    imgURL: {
-      type: String,
+    imgURL: [String],
+    countInStock: {
+      type: Number,
+      default: 1,
     },
-    countInStock: Number,
     rating: Number,
   },
   {

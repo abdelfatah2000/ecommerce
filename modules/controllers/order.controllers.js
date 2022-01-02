@@ -3,7 +3,7 @@ const Product = require("../model/products.models");
 const Cart = require("../model/cart.models");
 const { StatusCodes } = require("http-status-codes");
 const { createInvoice } = require("../../common/createInvoice");
-const sendEmail = require("../../common/email");
+const {sendEmailInvoice} = require("../../common/email");
 
 const addOrder = async (req, res) => {
   try {
@@ -36,7 +36,7 @@ const addOrder = async (req, res) => {
         })
       );
       let taxPrice = arr.reduce(function (a, b) {
-        return (a + b.price * b.quantity) * 0.14;
+        return (a + b.price * b.quantity) * 0.1;
       }, 0);
       let itemPrice = arr.reduce(function (a, b) {
         return a + b.price * b.quantity;
@@ -58,7 +58,7 @@ const addOrder = async (req, res) => {
       createInvoice(order, `Invoice.pdf`);
       // send the Invoice in email
       const message = `Your Order Invoice`;
-      await sendEmail({
+      await sendEmailInvoice({
         email: req.user.email,
         subject: "Invoice",
         html: message,

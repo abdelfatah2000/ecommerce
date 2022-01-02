@@ -1,7 +1,7 @@
 const { User, ConfirmCode } = require("../model/users.models");
 const { StatusCodes } = require("http-status-codes");
 const jwt = require("jsonwebtoken");
-const sendEmail = require("../../common/email");
+const { sendEmail } = require("../../common/email");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const generateCode = require("../../common/varificationCode");

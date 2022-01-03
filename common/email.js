@@ -34,8 +34,8 @@ const sendEmail = async options => {
     // port: process.env.EMAIL_PORT,
     service: "gmail",
     auth: {
-      user: "abdelfattahmohamed960@gmail.com", 
-      pass: "1990amh1990", 
+      user: process.env.EMAIL_USERNAME, 
+      pass: process.env.EMAIL_PASSWORD, 
     },
   });
   const mailOptions = {

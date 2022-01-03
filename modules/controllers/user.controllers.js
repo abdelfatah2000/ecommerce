@@ -25,13 +25,13 @@ const register = async (req, res) => {
 
       await userData.save();
       const code = await generateCode(userData._id);
-      const message = `<h2>${code}</h2>`;
-      await sendEmail({
-        email: req.body.email,
-        subject: "Account Confirmation Code",
-        html: message,
-      });
-      res.status(StatusCodes.CREATED).json({ message: "Done" });
+      // const message = `<h2>${code}</h2>`;
+      // await sendEmail({
+      //   email: req.body.email,
+      //   subject: "Account Confirmation Code",
+      //   html: message,
+      // });
+      res.status(StatusCodes.CREATED).json({ message: "Done",code });
     }
   } catch (error) {
     res.status(StatusCodes.BAD_REQUEST).json({

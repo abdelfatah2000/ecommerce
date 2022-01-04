@@ -6,7 +6,7 @@ const categorySchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    // imgURL: { type: String },
+    imgURL: { type: String },
   },
   { timestamps: true }
 );

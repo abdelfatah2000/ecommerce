@@ -66,4 +66,11 @@ app.delete(
   Validation(deleteProductValidation),
   controller.deleteProduct
 );
+
+app.get(
+  "/getProductByCategory/:id",
+  isAuthenticated(),
+  controller.getProductByCategory
+);
+
 module.exports = app;

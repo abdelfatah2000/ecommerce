@@ -120,6 +120,18 @@ const productNumber = async (req, res) => {
   }
 };
 
+const getProductByCategory = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const products = await Product.find({ category: id }).select("name brand price imgURL");
+    res.status(StatusCodes.OK).json({ message: "Done", products });
+  } catch {
+    res
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ message: "Please try again", error });
+  }
+};
+
 module.exports = {
   addProduct,
   updateProduct,
@@ -128,4 +140,5 @@ module.exports = {
   searchProduct,
   deleteProduct,
   productNumber,
+  getProductByCategory,
 };

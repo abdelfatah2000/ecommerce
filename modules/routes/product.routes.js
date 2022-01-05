@@ -36,7 +36,7 @@ const upload = multer({
 app.post(
   "/addProduct",
   isAuthenticated(),
-  Validation(addProductValidation),
+  // Validation(addProductValidation),
   upload.single("image"),
   controller.addProduct
 );

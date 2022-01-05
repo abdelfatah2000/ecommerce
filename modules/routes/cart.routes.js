@@ -14,7 +14,7 @@ app.get("/cartData", isAuthenticated(), controller.getCartData);
 app.put(
   "/removeCartItem",
   isAuthenticated(),
-  Validation(removeToCart),
+  Validation(removeCartItem),
   controller.removeCartItem
 );
 app.put("/changeQuantity", isAuthenticated(), controller.changeProductQuantity);

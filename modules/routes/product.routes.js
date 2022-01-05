@@ -38,7 +38,6 @@ app.post(
   isAuthenticated(),
   Validation(addProductValidation),
   upload.single("image"),
-  resizeImages,
   controller.addProduct
 );
 app.put(

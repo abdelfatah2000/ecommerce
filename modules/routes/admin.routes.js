@@ -10,8 +10,8 @@ const adminBro = new AdminBro({
   databases: [mongoose],
   rootPath: "/admin",
   branding: {
-    logo: "",
     companyName: "E-Commerce",
+    softwareBrothers: false,
   }
 });
 

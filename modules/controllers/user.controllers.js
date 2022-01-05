@@ -57,9 +57,7 @@ const varificationCode = async (req, res) => {
         .status(StatusCodes.BAD_REQUEST)
         .json({ message: "Code is expired, please try again" });
     } else {
-      const user = await User.findOne({ _id: confirmCode.userId });
-      user.isVerified = true;
-      await user.save({ validateBeforeSave: false });
+      await User.findByIdAndUpdate({_id:confirmPassword.userId}, {isVerified:true}, {new:true});
       await confirmCode.remove();
       res.status(StatusCodes.OK).json({ message: "Done" });
     }

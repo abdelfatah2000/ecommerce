@@ -32,16 +32,12 @@ const upload = multer({
   storage: multerStorage,
   fileFilter,
 });
-const resizeImages = (req, res, next) => {
-  console.log(req.files);
-  next();
-};
 
 app.post(
   "/addProduct",
   isAuthenticated(),
   Validation(addProductValidation),
-  upload.array("images", 3),
+  upload.single("image"),
   resizeImages,
   controller.addProduct
 );

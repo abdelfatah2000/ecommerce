@@ -43,7 +43,7 @@ const getProducts = async (req, res) => {
     // res.json({ data , page , skip });
 
     const data = await Product.find({ countInStock: { $gt: 0 } }).select(
-      "name price brand"
+      "name price brand imgURL"
     );
     console.log(req.body);
     res.status(StatusCodes.OK).json({ data });
